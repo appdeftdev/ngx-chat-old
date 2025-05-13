@@ -1,0 +1,45 @@
+{
+  "name": "@pazznetwork/strophe-ts",
+  "description": "Strophe.ts is an XMPP library for TypeScript",
+  "version": "1.0.7",
+  "homepage": "https://github.com/pazznetwork/strophets",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pazznetwork/strophets"
+  },
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "keywords": [
+    "xmpp",
+    "message",
+    "bosh",
+    "websocket",
+    "browser"
+  ],
+  "files": [
+    "src/",
+    "CHANGELOG.txt",
+    "LICENSE.txt",
+    "README.txt"
+  ],
+  "author": "Jakub Mikos (Codebastard)",
+  "contributors": [
+    "Jack Moffit (metajack)",
+    "Nathan Zorn (thepug)",
+    "Andreas Guth (Gordin)",
+    "Anton Stroganov (Aeon)",
+    "Florian Zeitz (Florob)",
+    "Christopher Zorn (twonds)",
+    "dodo",
+    "Lee Boynton (lboynton)",
+    "Theo Cushion (theozaurus)",
+    "Brendon Crawford (brendoncrawford)",
+    "JC Brand (jcbrand)"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "rxjs": "^7.8.1"
+  }
+}

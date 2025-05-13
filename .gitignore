@@ -1,0 +1,60 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+
+# dependencies
+node_modules/
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+
+# misc
+/.angular/cache
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+documentation/
+libs/ngx-xmpp/src/.secrets-const.ts
+test-results/
+playwright-report/
+
+.angular
+
+# Playwright
+**/test-results
+**/playwright-report
+**/playwright/.cache
+
+# Certificates
+*.pem
+**/**/*.pem
+apps/demo/src/*.pem
+apps/demo/src/local.entenhausen.pazz.de-key.pem
+apps/demo/src/local.entenhausen.pazz.de.pem
+
+.nx/cache
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore

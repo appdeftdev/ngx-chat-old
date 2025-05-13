@@ -1,0 +1,59 @@
+{
+  "name": "xmpp-adapter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/xmpp-adapter/src",
+  "projectType": "library",
+  "tags": [],
+  "namedInputs": {},
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/xmpp-adapter",
+        "main": "libs/xmpp-adapter/src/index.ts",
+        "tsConfig": "libs/xmpp-adapter/tsconfig.lib.json",
+        "assets": ["libs/xmpp-adapter/*.md"]
+      }
+    },
+    "ts-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "tsc --build --force --verbose libs/xmpp-adapter/tsconfig.lib.json"
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version"
+    },
+    "publish-internal": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          "nx version xmpp-adapter",
+          "nx build xmpp-adapter",
+          "cd dist/libs/xmpp-adapter && npm publish --registry https://repoproxy.entenhausen.pazz.de/repository/npm-internal/"
+        ]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          "nx version xmpp-adapter",
+          "nx build xmpp-adapter",
+          "cd dist/libs/xmpp-adapter && npm publish --registry https://repoproxy.entenhausen.pazz.de/repository/npm-internal/"
+        ]
+      }
+    }
+  }
+}
