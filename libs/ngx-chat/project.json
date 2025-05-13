@@ -1,0 +1,71 @@
+{
+  "name": "ngx-chat",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/ngx-chat/src",
+  "prefix": "ngx-chat",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/ngx-chat/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ngx-chat/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ngx-chat/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production",
+      "inputs": ["{projectRoot}/**/*", "{projectRoot}/package.json"]
+    },
+    "ts-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "tsc --build --force --verbose libs/ngx-chat/tsconfig.json"
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/angular:karma",
+      "options": {
+        "lintFilePatterns": ["libs/ngx-chat/**/*.ts", "libs/ngx-chat/**/*.html"]
+      }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version"
+    },
+    "publish-internal": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          "nx version ngx-chat",
+          "nx build ngx-chat",
+          "cd dist/libs/ngx-chat && npm publish --registry https://repoproxy.entenhausen.pazz.de/repository/npm-internal/"
+        ]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          "nx version ngx-chat",
+          "nx build ngx-chat",
+          "cd dist/libs/ngx-chat && npm publish"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<div
+  class="window-header"
+  (click)="headerClick.emit()"
+  [attr.data-zid]="recipient?.jid"
+>
+  <div class="chat-avatar-wrapper" (click)="onContactClick($event)">
+    <ngx-chat-avatar [imageUrl]="recipient?.avatar"></ngx-chat-avatar>
+  </div>
+
+  <div class="header-middle">
+    <div class="chat-name-wrapper" [title]="recipient?.name">
+      <span
+        [ngClass]="{
+          'has-click-handler': !isCollapsed && !!this.contactClickHandler
+        }"
+        (click)="onContactClick($event)"
+      >
+        {{ recipient?.name }}
+      </span>
+    </div>
+
+    <div
+      class="chat-status-wrapper"
+      *ngIf="!isCollapsed && recipientIsContactInWindow()"
+    >
+      <span class="chat-status">
+        {{ status$ | async }}
+      </span>
+    </div>
+  </div>
+
+  <div class="window-close" data-zid="close-chat" (click)="closeClick.emit()">&times;</div>
+</div>

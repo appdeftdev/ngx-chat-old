@@ -1,0 +1,15 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<ngx-chat-bubble>
+  <ngx-chat-bubble-avatar
+    [avatar]="contact?.avatar"
+    [avatarClickable]="true"
+    [showAvatar]="showAvatar"
+    (clicked$)="onContactClick()"
+  />
+  <ngx-chat-message-text-area [textContent]="message?.body" />
+  <ngx-chat-message-image [textContent]="message?.body" />
+  <ngx-chat-bubble-footer
+    [formattedDate]="message?.datetime | date: chatService.translations.timeFormat"
+    [nick]="nick ?? contact?.name"
+  />
+</ngx-chat-bubble>
