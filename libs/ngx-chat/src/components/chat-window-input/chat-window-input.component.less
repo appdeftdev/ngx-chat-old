@@ -1,0 +1,50 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+@import '../../colors';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica', 'Arial', serif;
+}
+
+.chat-input-container {
+  display: flex;
+  align-items: flex-end;
+  padding: 0.5em;
+  border-top: 1px solid @general-border-color;
+  background: #fff;
+  cursor: text;
+  gap: 0.5em;
+
+  ngx-chat-message-input {
+    flex-grow: 1;
+  }
+
+  .chat-input {
+    display: block;
+    width: 100%;
+    align-self: flex-start;
+    padding: 0;
+    border: none;
+    font-size: 1em;
+    overflow-x: hidden;
+    outline: none;
+  }
+
+  .chat-action {
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .chat-window-send, .chat-window-upload {
+    background-color: #fff;
+    color: #222;
+    border: none;
+    width: 1.5em;
+
+    &:active {
+      border: none;
+    }
+  }
+}

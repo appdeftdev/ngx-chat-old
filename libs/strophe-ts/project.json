@@ -1,0 +1,58 @@
+{
+  "name": "strophe-ts",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/strophe-ts/src",
+  "projectType": "library",
+  "tags": ["scope:strophe-ts"],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/strophe-ts",
+        "main": "libs/strophe-ts/src/index.ts",
+        "tsConfig": "libs/strophe-ts/tsconfig.lib.json",
+        "assets": ["libs/strophe-ts/*.md"]
+      }
+    },
+    "ts-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "tsc --build --force --verbose libs/strophe-ts/tsconfig.json"
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version"
+    },
+    "publish-internal": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          "nx version strophe-ts",
+          "nx build strophe-ts",
+          "cd dist/libs/strophe-ts && npm publish --registry https://repoproxy.entenhausen.pazz.de/repository/npm-internal/"
+        ]
+      }
+    },
+    "publish": {
+      "executor": "nx:run-commands",
+      "options": {
+        "parallel": false,
+        "commands": [
+          "nx version strophe-ts",
+          "nx build strophe-ts",
+          "cd dist/libs/strophe-ts && npm publish --registry https://repoproxy.entenhausen.pazz.de/repository/npm-internal/"
+        ]
+      }
+    }
+  }
+}
