@@ -1,0 +1,23 @@
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<ngx-chat-bubble *ngIf="showAll$ | async">
+  <ng-container ngProjectAs="ngx-chat-message-text-area" data-zid="contact-request">
+    <span>{{ message$ | async }}</span>
+    <ul class="chat-presence-subscription-actions">
+      <li *ngIf="showAccept$ | async" data-zid="accept-user" (click)="acceptSubscriptionRequest()">
+        <a href="javascript:;">{{ chatService.translations.acceptSubscriptionRequest }}</a>
+      </li>
+      <li *ngIf="showAdd$ | async" data-zid="add-user" (click)="acceptSubscriptionRequest()">
+        <a href="javascript:;">{{ chatService.translations.addUser }}</a>
+      </li>
+      <li *ngIf="showAccept$ | async" data-zid="remove-user" (click)="removeContact()">
+        <a href="javascript:;">{{ chatService.translations.removeContact }}</a>
+      </li>
+      <li data-zid="block-user" (click)="blockUser()">
+        <a href="javascript:;">{{ chatService.translations.block }}</a>
+      </li>
+      <li *ngIf="reportUserService" data-zid="block-and-report-user" (click)="blockUserAndReport()">
+        <a href="javascript:;">{{ chatService.translations.blockAndReport }}</a>
+      </li>
+    </ul>
+  </ng-container>
+</ngx-chat-bubble>
